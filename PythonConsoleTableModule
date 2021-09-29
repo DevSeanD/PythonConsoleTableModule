@@ -1,10 +1,15 @@
+"""
+TODO:
+  * Add borders for fields
+"""
+
 sampleList = []
 
 for index in range(50):
   sampleList.append(1.2341234954345)
   sampleList.append(1.234235)
 
-sampleList[3] = 1.23412349543452342348254345
+sampleList[3] = 1.234123495434523423482543
 
 maxLen = 0
 for index in range(len(sampleList)):
@@ -33,3 +38,75 @@ for index in range(len(sampleList)):
     count = 0
     print()
   
+#One field
+print("-------------")
+print("| 123456789 |")
+print("-------------")
+
+#need one space on each side of the text. + 2 spaces for | = 4 additional spaces
+
+#lets generate one field and print it
+exNum = 112341293.1234123
+exNumStr = str(exNum)
+top = "----"
+mid = "| "
+bot = "----"
+
+for index in range(len(exNumStr)):
+  top = top + "-"
+  bot = bot + "-"
+  mid = mid + exNumStr[index]
+  
+mid = mid + " |"
+
+print(top)
+print(mid)
+print(bot)
+
+
+# New appoarch
+
+# This is the best method, must generate the space then fill it and then make the next and then fill it
+testStr = "| {} |"
+testList = [1,2]
+
+testStr = testStr.format(testList[0])
+
+testStr = testStr + " {} |"
+testStr = testStr.format(testList[1])
+
+print(testStr)
+
+midStr = "| {} "
+dataList = [1,2,3,4,5,6,7,9,8]
+
+sampleList = []
+
+for index in range(50):
+  sampleList.append(1.2341234954345)
+  sampleList.append(1.234235)
+
+numOfCol = 4
+colCount = 1
+
+for index in range(len(sampleList)):
+  currLen = len(str(sampleList[index]))
+  currStr = str(sampleList[index])
+
+  if currLen != maxLen:
+    for index in range(maxLen-currLen):
+      currStr = currStr + ' '
+  
+  midStr = midStr.format(currStr)
+  if index != len(sampleList) - 1:
+    midStr = midStr + "| {} "
+  if index == len(sampleList) - 1:
+    midStr = midStr + "|"
+    
+  if colCount == numOfCol:
+    midStr = midStr + '\n'
+    colCount = 0
+    
+  colCount += 1
+  
+print(midStr)
