@@ -1,0 +1,35 @@
+sampleList = []
+
+for index in range(50):
+  sampleList.append(1.2341234954345)
+  sampleList.append(1.234235)
+
+sampleList[3] = 1.23412349543452342348254345
+
+maxLen = 0
+for index in range(len(sampleList)):
+  currLen = len(str(sampleList[index]))
+  if currLen > maxLen:
+    maxLen = currLen
+
+print(maxLen)
+
+numOfCol = 6
+count = 0
+
+for index in range(len(sampleList)):
+  
+  currLen = len(str(sampleList[index]))
+  currStr = str(sampleList[index])
+
+  if currLen != maxLen:
+    for index in range(maxLen-currLen):
+      currStr = currStr + ' '
+      
+  count += 1
+  print(currStr,end='\t')
+  
+  if count == numOfCol:
+    count = 0
+    print()
+  
