@@ -1,7 +1,7 @@
 """
 TODO:
-  * Add borders for fields
-  * Fix bug where on only the first row the number of colomns is increased by 1.
+  * Add top and bottom borders for fields
+  * Center the text within fields
 """
 
 sampleList = []
@@ -78,7 +78,7 @@ testStr = testStr.format(testList[1])
 
 print(testStr)
 
-midStr = "| {} "
+midStr = ""
 dataList = [1,2,3,4,5,6,7,9,8]
 
 sampleList = []
@@ -89,6 +89,8 @@ for index in range(50):
 
 numOfCol = 4
 colCount = 1
+
+#need to print border along the top of the table
 
 for index in range(len(sampleList)):
   currLen = len(str(sampleList[index]))
@@ -107,5 +109,6 @@ for index in range(len(sampleList)):
     colCount = 0
     
   colCount += 1
+  #need to print border along the bottom of each line
   
 print(midStr)
