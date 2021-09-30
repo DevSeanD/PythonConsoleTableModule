@@ -1,6 +1,7 @@
 """
 TODO:
   * Add borders for fields
+  * Fix bug where on only the first row the number of colomns is increased by 1.
 """
 
 sampleList = []
@@ -98,13 +99,11 @@ for index in range(len(sampleList)):
       currStr = currStr + ' '
   
   midStr = midStr.format(currStr)
-  if index != len(sampleList) - 1:
+  
+  if colCount != numOfCol + 1:
     midStr = midStr + "| {} "
-  if index == len(sampleList) - 1:
-    midStr = midStr + "|"
-    
-  if colCount == numOfCol:
-    midStr = midStr + '\n'
+  if colCount == numOfCol + 1:
+    midStr = midStr + "|" +'\n'
     colCount = 0
     
   colCount += 1
