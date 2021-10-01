@@ -7,13 +7,15 @@ TODO:
 """
 sampleList = []
 
-for index in range(1,125):
+for index in range(1,126):
   sampleList.append(str(index))
 
-midStr = ""
-numOfCol = 12
-colCount = 1
-maxLen = 0
+midStr = "" #midStr holds the formated contents of the list
+numOfCol = 6 #Desired number of colomns
+colCount = 1 #Keeps track of how many colomns are generated
+rowCount = 1 #Keeps track of how many rows are generated
+valCount = 0 #Keeps track of how many values are added to midStr
+maxLen = 0 #Holds the value of the longest value in terms of characters
 
 for index in range(len(sampleList)):
   currLen = len(str(sampleList[index]))
@@ -36,14 +38,16 @@ for index in range(len(sampleList)):
 
   if colCount == numOfCol + 1:
     midStr += "|" +'\n'
+    rowCount += 1
     colCount = 0
 
   midStr = midStr.format(currStr)
    
   colCount += 1
+  valCount += 1
 
-if colCount != numOfCol:
-  for index in range((numOfCol + 2)-colCount):
+if valCount != (numOfCol * rowCount): # This mean there are empty fields
+  for index in range((numOfCol + 1) * rowCount - valCount):
     midStr += "|  "
     for index in range(maxLen):
       midStr += " "
@@ -65,3 +69,4 @@ print(topAndBotStr)
 for line in displayList:
   print(line)
   print(topAndBotStr)
+
