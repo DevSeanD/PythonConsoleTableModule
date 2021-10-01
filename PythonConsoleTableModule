@@ -1,97 +1,25 @@
 """
-TODO:
-  * Add top and bottom borders for fields
-  * Center the text within fields
-"""
+FileName = PythonTableModule.py
 
+TODO:
+  *Center the values in the fields
+  *Add support for headings
+"""
 sampleList = []
 
-for index in range(50):
-  sampleList.append(1.2341234954345)
-  sampleList.append(1.234235)
+for index in range(1,125):
+  sampleList.append(str(index))
 
-sampleList[3] = 1.234123495434523423482543
-
+midStr = ""
+numOfCol = 12
+colCount = 1
 maxLen = 0
+
 for index in range(len(sampleList)):
   currLen = len(str(sampleList[index]))
   if currLen > maxLen:
     maxLen = currLen
 
-print(maxLen)
-
-numOfCol = 6
-count = 0
-
-for index in range(len(sampleList)):
-  
-  currLen = len(str(sampleList[index]))
-  currStr = str(sampleList[index])
-
-  if currLen != maxLen:
-    for index in range(maxLen-currLen):
-      currStr = currStr + ' '
-      
-  count += 1
-  print(currStr,end='\t')
-  
-  if count == numOfCol:
-    count = 0
-    print()
-  
-#One field
-print("-------------")
-print("| 123456789 |")
-print("-------------")
-
-#need one space on each side of the text. + 2 spaces for | = 4 additional spaces
-
-#lets generate one field and print it
-exNum = 112341293.1234123
-exNumStr = str(exNum)
-top = "----"
-mid = "| "
-bot = "----"
-
-for index in range(len(exNumStr)):
-  top = top + "-"
-  bot = bot + "-"
-  mid = mid + exNumStr[index]
-  
-mid = mid + " |"
-
-print(top)
-print(mid)
-print(bot)
-
-
-# New appoarch
-
-# This is the best method, must generate the space then fill it and then make the next and then fill it
-testStr = "| {} |"
-testList = [1,2]
-
-testStr = testStr.format(testList[0])
-
-testStr = testStr + " {} |"
-testStr = testStr.format(testList[1])
-
-print(testStr)
-
-midStr = ""
-dataList = [1,2,3,4,5,6,7,9,8]
-
-sampleList = []
-
-for index in range(50):
-  sampleList.append(1.2341234954345)
-  sampleList.append(1.234235)
-
-numOfCol = 4
-colCount = 1
-
-#need to print border along the top of the table
-
 for index in range(len(sampleList)):
   currLen = len(str(sampleList[index]))
   currStr = str(sampleList[index])
@@ -100,15 +28,40 @@ for index in range(len(sampleList)):
     for index in range(maxLen-currLen):
       currStr = currStr + ' '
   
-  midStr = midStr.format(currStr)
-  
-  if colCount != numOfCol + 1:
-    midStr = midStr + "| {} "
+  if colCount - 1 != numOfCol + 1:
+    if index != len(sampleList):
+      midStr += "| {} "
+    if index == len(sampleList):
+      midStr += "|    "
+
   if colCount == numOfCol + 1:
-    midStr = midStr + "|" +'\n'
+    midStr += "|" +'\n'
     colCount = 0
-    
+
+  midStr = midStr.format(currStr)
+   
   colCount += 1
-  #need to print border along the bottom of each line
-  
-print(midStr)
+
+if colCount != numOfCol:
+  for index in range((numOfCol + 2)-colCount):
+    midStr += "|  "
+    for index in range(maxLen):
+      midStr += " "
+  midStr += "|"
+topAndBotStr = ""
+
+splitMidStr = midStr.split('\n')
+displayList = []
+
+
+for line in splitMidStr:
+  if line != '':
+    displayList.append(line)
+
+for index in range(len(splitMidStr[0])):
+  topAndBotStr += "-"
+
+print(topAndBotStr)
+for line in displayList:
+  print(line)
+  print(topAndBotStr)
