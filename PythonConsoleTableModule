@@ -5,9 +5,9 @@ TODO:
   *Center the values in the fields
   *Add support for headings
 """
-sampleList = []
+sampleList = [] #Testing List
 
-for index in range(1,126):
+for index in range(1,126): #Populating Test List
   sampleList.append(str(index))
 
 midStr = "" #midStr holds the formated contents of the list
@@ -17,21 +17,21 @@ rowCount = 1 #Keeps track of how many rows are generated
 valCount = 0 #Keeps track of how many values are added to midStr
 maxLen = 0 #Holds the value of the longest value in terms of characters
 
-for index in range(len(sampleList)):
-  currLen = len(str(sampleList[index]))
-  if currLen > maxLen:
+for index in range(len(sampleList)): #Iterate through the list
+  currLen = len(str(sampleList[index])) #Length of the current value string
+  if currLen > maxLen: #Finds the length of the longest value string
     maxLen = currLen
 
-for index in range(len(sampleList)):
-  currLen = len(str(sampleList[index]))
-  currStr = str(sampleList[index])
+for index in range(len(sampleList)): #Iterate through the list
+  currLen = len(str(sampleList[index])) #Length if the curent value string
+  currStr = str(sampleList[index]) #Holds the current value string
 
-  if currLen != maxLen:
+  if currLen != maxLen: #Adds spaces such that all value strings are the same length
     for index in range(maxLen-currLen):
       currStr = currStr + ' '
   
-  if colCount - 1 != numOfCol + 1:
-    if index != len(sampleList):
+  if colCount - 1 != numOfCol + 1: #If not ever value has been added to this row
+    if index != len(sampleList): 
       midStr += "| {} "
     if index == len(sampleList):
       midStr += "|    "
@@ -69,4 +69,3 @@ print(topAndBotStr)
 for line in displayList:
   print(line)
   print(topAndBotStr)
-
