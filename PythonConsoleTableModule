@@ -31,17 +31,15 @@ for index in range(len(sampleList)): #Iterate through the list
       currStr = currStr + ' '
   
   if colCount - 1 != numOfCol + 1: #If not ever value has been added to this row
-    if index != len(sampleList): 
+    if index != len(sampleList): #If all values have not been iterated
       midStr += "| {} "
-    if index == len(sampleList):
-      midStr += "|    "
 
-  if colCount == numOfCol + 1:
+  if colCount == numOfCol + 1: #If the number of columns in this row is equal to the number of desired columns
     midStr += "|" +'\n'
     rowCount += 1
     colCount = 0
 
-  midStr = midStr.format(currStr)
+  midStr = midStr.format(currStr) #Format our current field with its associated value
    
   colCount += 1
   valCount += 1
@@ -57,15 +55,14 @@ topAndBotStr = ""
 splitMidStr = midStr.split('\n')
 displayList = []
 
-
 for line in splitMidStr:
-  if line != '':
+  if line != '': #Ensure there are no blank lines
     displayList.append(line)
 
-for index in range(len(splitMidStr[0])):
+for index in range(len(splitMidStr[0])): #Create lower boarders for fields
   topAndBotStr += "-"
 
-print(topAndBotStr)
+print(topAndBotStr) #Print top border
 for line in displayList:
-  print(line)
-  print(topAndBotStr)
+  print(line) #Print fields
+  print(topAndBotStr) #Print bottom field borders
