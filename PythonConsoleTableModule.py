@@ -78,12 +78,3 @@ def createAndPrintTable(headerValueList,fieldValueList):
     for line in displayList:
       print(line) #Print fields
       print(topAndBotStr) #Print bottom field borders
-
-
-headerList = ["One","Two","Three","Four","Five","Six","Seven"] # List of table headings
-sampleList = [] #Testing List
-
-for index in range(1,126): #Populating Test List
-  sampleList.append(str(index))
-
-createAndPrintTable(headerList,sampleList)
