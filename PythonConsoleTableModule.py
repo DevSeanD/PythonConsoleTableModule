@@ -11,7 +11,7 @@ def createAndPrintTable(headerValueList,fieldValueList):
     sampleList = fieldValueList
        
     midStr = "" #midStr holds the formated contents of the list
-    numOfCol = 6 #Desired number of colomns
+    numOfCol = len(headerList) - 1 #Desired number of colomns
     colCount = 1 #Keeps track of how many colomns are generated
     rowCount = 1 #Keeps track of how many rows are generated
     valCount = 0 #Keeps track of how many values are added to midStr
@@ -76,5 +76,8 @@ def createAndPrintTable(headerValueList,fieldValueList):
 
     print(topAndBotStr) #Print top border
     for line in displayList:
-      print(line) #Print fields
-      print(topAndBotStr) #Print bottom field borders
+      if line[2] == ' ':
+        pass
+      else:
+        print(line) #Print fields
+        print(topAndBotStr) #Print bottom field borders
